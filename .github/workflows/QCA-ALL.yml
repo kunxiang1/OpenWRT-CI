@@ -35,7 +35,7 @@ jobs:
       fail-fast: false
       #max-parallel: 3
       matrix:
-        CONFIG: [redmi_ax6]
+        CONFIG: [redmi-ax6]
         SOURCE: [VIKINGYFY/immortalwrt]
         BRANCH: [main]
 
