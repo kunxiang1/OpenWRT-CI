@@ -64,7 +64,7 @@ UPDATE_PACKAGE "passwall2" "Openwrt-Passwall/openwrt-passwall2" "main" "pkg"
 UPDATE_PACKAGE "luci-app-tailscale-community" "Tokisaki-Galaxy/luci-app-tailscale-community" "master"
 UPDATE_PACKAGE "luci-app-bandix-plus" "timsaya/luci-app-bandix-plus" "main"
 UPDATE_PACKAGE "openwrt-bandix-plus" "timsaya/openwrt-bandix-plus" "main"
-UPDATE_PACKAGE "tailscale" "GuNanOvO/openwrt-tailscale" "main" "tailscale"
+#UPDATE_PACKAGE "tailscale" "GuNanOvO/openwrt-tailscale" "main" "tailscale"
 #UPDATE_PACKAGE "golang" "sbwml/packages_lang_golang" "26.x" "golang"
 
 #UPDATE_PACKAGE "athena-led" "unraveloop/JDC-AX6600-Athena-LED-Controller" "main"
