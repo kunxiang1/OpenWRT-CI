@@ -2,7 +2,7 @@
 # Copyright (C) 2026 VIKINGYFY
 
 #CI项目
-name: link_nn6000-NO-WIFI
+name: jdcloud-NO-WIFI
 
 #CI计划
 on:
