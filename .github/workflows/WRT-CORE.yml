@@ -233,8 +233,7 @@ jobs:
           files: ./wrt/upload/*.*
           body: |
             这是个人定制包。
-            
-            红米Ax6开源硬件加速。
+            主要是添加了frr这个开源动态路由协议，没有魔法，本人不感兴趣。其它一些都是常见的插件。
 
             源码：${{env.WRT_REPO}}
             分支：${{env.WRT_BRANCH}}
