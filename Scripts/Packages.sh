@@ -67,6 +67,7 @@ UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
 #UPDATE_PACKAGE "luci-app-tailscale-community" "Tokisaki-Galaxy/luci-app-tailscale-community" "master"
 UPDATE_PACKAGE "OpenAppFilter" "destan19/OpenAppFilter" "master"
 UPDATE_PACKAGE "luci-app-clientstatus" "migee99/luci-app-clientstatus" "main"
+UPDATE_PACKAGE "luci-app-lanspeed" "qimaoww/luci-app-lanspeed" "main"
 #UPDATE_PACKAGE "tailscale" "GuNanOvO/openwrt-tailscale" "main" "tailscale"
 #UPDATE_PACKAGE "golang" "sbwml/packages_lang_golang" "26.x" "golang"
 
