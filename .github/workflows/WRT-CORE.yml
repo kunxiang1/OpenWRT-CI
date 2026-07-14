@@ -82,11 +82,6 @@ jobs:
           sudo -E systemctl daemon-reload
           sudo -E timedatectl set-timezone "Asia/Shanghai"
 
-          # 固定 Rust 版本为 1.94.0 以解决 lanspeedd VersionMismatch 错误
-          rustup install 1.94.0
-          rustup default 1.94.0
-          rustup target add aarch64-unknown-linux-musl x86_64-unknown-linux-gnu --toolchain 1.94.0
-
           sudo mkdir -p /mnt/build_wrt
           sudo chown $USER:$USER /mnt/build_wrt
           sudo ln -s /mnt/build_wrt $GITHUB_WORKSPACE/wrt
