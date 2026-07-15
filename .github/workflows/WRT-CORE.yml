@@ -232,9 +232,7 @@ jobs:
           tag_name: ${{env.WRT_CONFIG}}-${{env.WRT_INFO}}-${{env.WRT_BRANCH}}-${{env.WRT_DATE}}
           files: ./wrt/upload/*.*
           body: |
-            这是个人定制包。
-		 主要是添加了frr这个开源动态路由协议，没有魔法，本人不感兴趣。其它一些都是常见的插件。
-
+            这是个人定制包，添加了frr动态路由。没有魔法，只有常用的插件。
 
             源码：${{env.WRT_REPO}}
             分支：${{env.WRT_BRANCH}}
