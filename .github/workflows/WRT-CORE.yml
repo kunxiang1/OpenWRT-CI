@@ -176,16 +176,14 @@ jobs:
 
           make defconfig -j$(nproc) && make clean -j$(nproc)
 
-	#  添加 sccache
-	- name: Setup sccache
+      - name: Setup sccache
         uses: mozilla-actions/sccache-action@v0.0.9
 
-      # 设置环境变量让 cargo 使用 sccache
       - name: Configure sccache env
         run: |
           echo "RUSTC_WRAPPER=sccache" >> $GITHUB_ENV
           echo "SCCACHE_GHA_ENABLED=true" >> $GITHUB_ENV
-
+          
       - name: Download Packages
         if: env.WRT_TEST != 'true'
         run: |
