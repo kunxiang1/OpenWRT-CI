@@ -1,7 +1,6 @@
 CONFIG_TARGET_qualcommax=y
 CONFIG_TARGET_qualcommax_ipq60xx=y
 CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_link_nn6000-v2=y
-CONFIG_TARGET_DEVICE_qualcommax_ipq60xx_DEVICE_jdcloud_re-cs-02=y
 CONFIG_PACKAGE_appfilter=y
 CONFIG_PACKAGE_kmod-oaf=y
 CONFIG_PACKAGE_frr=y
