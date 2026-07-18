@@ -176,14 +176,14 @@ jobs:
 
           make defconfig -j$(nproc) && make clean -j$(nproc)
 
-      - name: Setup sccache
-        uses: mozilla-actions/sccache-action@v0.0.9
-
-      - name: Configure sccache env
-        run: |
-          echo "RUSTC_WRAPPER=sccache" >> $GITHUB_ENV
-          echo "SCCACHE_GHA_ENABLED=true" >> $GITHUB_ENV
-          
+#      - name: Setup sccache
+#        uses: mozilla-actions/sccache-action@v0.0.9
+#
+#      - name: Configure sccache env
+#        run: |
+#          echo "RUSTC_WRAPPER=sccache" >> $GITHUB_ENV
+#          echo "SCCACHE_GHA_ENABLED=true" >> $GITHUB_ENV
+#          
       - name: Download Packages
         if: env.WRT_TEST != 'true'
         run: |
