@@ -35,6 +35,8 @@ CONFIG_PACKAGE_oaf=y
 CONFIG_PACKAGE_wireguard-tools=y
 CONFIG_PACKAGE_luci-app-arpbind=y
 CONFIG_PACKAGE_luci-app-oaf=y
+#CONFIG_PACKAGE_luci-app-clientstatus=y
+CONFIG_PACKAGE_luci-app-lanspeed=y
 CONFIG_PACKAGE_luci-app-ddns-go=y
 CONFIG_PACKAGE_luci-app-lldpd=y
 CONFIG_PACKAGE_luci-app-msd_lite=y
@@ -43,7 +45,7 @@ CONFIG_PACKAGE_luci-app-ocserv=y
 CONFIG_PACKAGE_luci-app-omcproxy=y
 CONFIG_PACKAGE_luci-app-easytier=y
 CONFIG_PACKAGE_luci-app-quickfile=y
-CONFIG_PACKAGE_luci-app-tailscale=y
+CONFIG_PACKAGE_luci-app-tailscale-community=y
 CONFIG_PACKAGE_luci-app-vlmcsd=y
 CONFIG_PACKAGE_luci-app-wol=y
 CONFIG_PACKAGE_luci-app-zerotier=y
@@ -63,11 +65,13 @@ CONFIG_PACKAGE_luci-i18n-ocserv-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-omcproxy-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-package-manager-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-quickfile-zh-cn=y
-CONFIG_PACKAGE_luci-i18n-tailscale-zh-cn=y
+CONFIG_PACKAGE_luci-i18n-tailscale-community-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-easytier-zh-cn=y
+#CONFIG_PACKAGE_luci-i18n-clientstatus-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-vlmcsd-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-wol-zh-cn=y
 CONFIG_PACKAGE_luci-i18n-zerotier-zh-cn=y
+
 
 
 #WIFI驱动
