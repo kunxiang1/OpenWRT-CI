@@ -30,6 +30,7 @@ CONFIG_PACKAGE_strongswan-charon=y
 CONFIG_PACKAGE_strongswan-mod-vici=y
 CONFIG_PACKAGE_strongswan-swanctl=y
 CONFIG_PACKAGE_tailscale=y
+CONFIG_PACKAGE_phantun=y
 CONFIG_PACKAGE_open-app-filter=y
 CONFIG_PACKAGE_oaf=y
 CONFIG_PACKAGE_wireguard-tools=y
