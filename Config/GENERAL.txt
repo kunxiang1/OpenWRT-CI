@@ -9,8 +9,8 @@ CONFIG_PACKAGE_luci-app-upnp=y
 CONFIG_PACKAGE_luci-app-wolultra=y
 CONFIG_PACKAGE_luci-app-frr=y
 CONFIG_PACKAGE_luci-app-interfaces-statistics=y
-CONFIG_PACKAGE_luci-app-mstpd =y
-CONFIG_PACKAGE_luci-app-phantun =y
+CONFIG_PACKAGE_luci-app-mstpd=y
+CONFIG_PACKAGE_luci-app-phantun=y
 #删除插件
 CONFIG_PACKAGE_luci-app-attendedsysupgrade=n
 CONFIG_PACKAGE_luci-app-wol=n
