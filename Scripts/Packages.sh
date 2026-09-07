@@ -65,6 +65,7 @@ UPDATE_PACKAGE "passwall2" "Openwrt-Passwall/openwrt-passwall2" "main" "pkg"
 UPDATE_PACKAGE "luci-app-frr" "kunxiang1/luci-app-frr" "main"
 UPDATE_PACKAGE "luci-app-phantun" "kunxiang1/luci-app-phantun" "main"
 UPDATE_PACKAGE "luci-app-mstpd" "kunxiang1/luci-app-mstpd" "main"
+UPDATE_PACKAGE "ustp" "kunxiang1/ustp" "main"
 UPDATE_PACKAGE "luci-app-interfaces-statistics" "kunxiang1/luci-app-interfaces-statistics" "main"
 
 UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
