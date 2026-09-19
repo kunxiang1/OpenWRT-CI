@@ -3,6 +3,9 @@
 # Copyright (C) 2026 VIKINGYFY
 
 #安装和更新软件包
+#记录克隆失败的仓库，末尾统一告警（克隆失败不会中断编译，但对应插件不会进固件）
+CLONE_FAILED_LIST=""
+
 UPDATE_PACKAGE() {
 	local PKG_NAME=$1
 	local PKG_REPO=$2
@@ -31,7 +34,13 @@ UPDATE_PACKAGE() {
 	done
 
 	# 克隆 GitHub 仓库
-	git clone --depth=1 --single-branch --branch $PKG_BRANCH "https://github.com/$PKG_REPO.git"
+	# GIT_TERMINAL_PROMPT=0：仓库不存在或转为私有时，git 会去要账号密码，
+	# 在 CI 里只会打印一句 "could not read Username" 然后静默跳过，这里改为显式报错。
+	if ! GIT_TERMINAL_PROMPT=0 git clone --depth=1 --single-branch --branch "$PKG_BRANCH" "https://github.com/$PKG_REPO.git"; then
+		echo "ERROR: 克隆 $PKG_REPO（分支 $PKG_BRANCH）失败，请确认仓库地址和分支是否有效！"
+		CLONE_FAILED_LIST="$CLONE_FAILED_LIST $PKG_REPO:$PKG_BRANCH"
+		return
+	fi
 
 	# 处理克隆的仓库
 	if [[ "$PKG_SPECIAL" == "pkg" ]]; then
@@ -56,7 +65,9 @@ UPDATE_PACKAGE "noobwrt" "nooblk-98/luci-theme-noobwrt" "master"
 UPDATE_PACKAGE "shadcn" "eamonxg/luci-theme-shadcn" "main"
 UPDATE_PACKAGE "theme-fluent" "LazuliKao/luci-theme-fluent" "main"
 
-UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "main"
+#注意：不要再加 UPDATE_PACKAGE "homeproxy" "VIKINGYFY/homeproxy" "main"
+#该仓库已不存在（clone 会 404 要账号密码），而 luci-app-homeproxy 由下面的 viking
+#（VIKINGYFY/packages）提供，此前的写法只会把 feeds 里的 homeproxy 删掉再克隆失败。
 UPDATE_PACKAGE "momo" "nikkinikki-org/OpenWrt-momo" "main"
 UPDATE_PACKAGE "nikki" "nikkinikki-org/OpenWrt-nikki" "main"
 UPDATE_PACKAGE "openclash" "vernesong/OpenClash" "dev" "pkg"
@@ -70,7 +81,11 @@ UPDATE_PACKAGE "luci-app-interfaces-statistics" "kunxiang1/luci-app-interfaces-s
 
 UPDATE_PACKAGE "luci-app-tailscale" "asvow/luci-app-tailscale" "main"
 UPDATE_PACKAGE "luci-app-tailscale-community" "Tokisaki-Galaxy/luci-app-tailscale-community" "master"
-UPDATE_PACKAGE "OpenAppFilter" "destan19/OpenAppFilter" "master"
+#OpenAppFilter：仓库里自带 oaf(kmod-oaf) 和 appfilter，feeds 里的 open-app-filter
+#也定义同样的 kmod-oaf / appfilter，两边同名会让 kconfig 报
+#"symbol PACKAGE_kmod-oaf is selected by PACKAGE_kmod-oaf" 并且重复编译两份。
+#按本脚本开头的说明，第5个参数把 feeds 里的旧版本目录删掉，只留克隆来的版本。
+UPDATE_PACKAGE "OpenAppFilter" "destan19/OpenAppFilter" "master" "" "open-app-filter luci-app-appfilter"
 UPDATE_PACKAGE "luci-app-clientstatus" "migee99/luci-app-clientstatus" "main"
 UPDATE_PACKAGE "luci-app-lanspeed" "qimaoww/luci-app-lanspeed" "main"
 UPDATE_PACKAGE "tailscale" "GuNanOvO/openwrt-tailscale" "main" "tailscale"
@@ -140,4 +155,15 @@ UPDATE_VERSION "sing-box"
 #引入私有扩展脚本
 if [ -f "$GITHUB_WORKSPACE/Scripts/PRIVATE.sh" ]; then
 	source "$GITHUB_WORKSPACE/Scripts/PRIVATE.sh"
+fi
+
+#克隆失败汇总
+if [ -n "$CLONE_FAILED_LIST" ]; then
+	echo " "
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "以下仓库克隆失败，对应插件不会出现在固件里，请及时修正："
+	for ITEM in $CLONE_FAILED_LIST; do
+		echo "  - $ITEM"
+	done
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 fi
