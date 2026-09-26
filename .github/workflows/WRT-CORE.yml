@@ -187,10 +187,6 @@ jobs:
 
           make defconfig -j$(nproc) && make clean -j$(nproc)
 
-          #配置自检：同类驱动的重复包等问题会让编译在最后一步失败，
-          #这里提前几十秒发现问题，避免白等几小时
-          $GITHUB_WORKSPACE/Scripts/Check.sh
-
       - name: Download Packages
         if: ${{ !inputs.WRT_TEST }}
         run: |
